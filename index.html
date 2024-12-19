@@ -1,43 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Telegram Bot Code Submission</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GambaCodez Bonus Codes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        .logo {
+            width: 150px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin: 20px auto;
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background: #fff;
+            border-radius: 8px;
+        }
+        button, input[type="text"] {
+            padding: 10px 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-  <h1>Submit Your Code</h1>
+    <!-- Logo -->
+    <img src="https://i.ibb.co/jz4STcc/Treasure-chest.jpg" alt="Logo" class="logo">
 
-  <form id="codeForm">
-    <input type="text" id="codeInput" placeholder="Enter code here" required />
-    <button type="submit">Submit</button>
-  </form>
+    <h1>GambaCodez Bonus Codes</h1>
 
-  <div id="response"></div>
+    <!-- Form for code input -->
+    <form id="codeForm">
+        <div class="radio-group">
+            <p>Select your platform:</p>
+            <label><input type="radio" name="platform" value="stakecom" checked> Stake.com</label>
+            <label><input type="radio" name="platform" value="stakeus"> Stake.us</label>
+            <label><input type="radio" name="platform" value="shuffle"> Shuffle</label>
+        </div>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    // This script will handle the form submission
-    $('#codeForm').on('submit', function(e) {
-      e.preventDefault(); // Prevents the default form submission
+        <label for="codeInput">Enter your code:</label>
+        <input type="text" id="codeInput" name="codeInput" placeholder="Enter or paste code here" required>
+        <br>
+        <!-- Paste Button -->
+        <button type="button" id="pasteButton">Paste Code</button>
+        <!-- Submit Button -->
+        <button type="submit">Submit</button>
+    </form>
 
-      const code = $('#codeInput').val(); // Get the value from the input field
+    <!-- Footer with Telegram links -->
+    <footer>
+        <p>Stay connected with us:</p>
+        <a href="https://t.me/GambaCodezHub" target="_blank">Join Our Telegram Group</a>
+        <a href="https://t.me/OfficialGambaCodez_bot" target="_blank">Use Our Telegram Bot</a>
+    </footer>
 
-      // Send the code to your API or server
-      $.ajax({
-        url: '/submitCode', // This will hit the POST endpoint you create in Node.js
-        method: 'POST',
-        data: {
-          code: code
-        },
-        success: function(response) {
-          $('#response').text('Code submitted successfully!');
-        },
-        error: function() {
-          $('#response').text('There was an error submitting the code.');
-        }
-      });
-    });
-  </script>
+    <!-- JavaScript to handle paste and form submission -->
+    <script>
+        document.getElementById("pasteButton").addEventListener("click", async function () {
+            try {
+                // Get text from clipboard
+                const text = await navigator.clipboard.readText();
+                document.getElementById("codeInput").value = text; // Paste into input field
+            } catch (err) {
+                alert("Failed to paste from clipboard. Please try again!");
+            }
+        });
+
+        document.getElementById("codeForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get selected platform and entered code
+            const platform = document.querySelector('input[name="platform"]:checked').value;
+            const code = document.getElementById("codeInput").value;
+
+            if (!code.trim()) {
+                alert("Please enter or paste a code.");
+                return;
+            }
+
+            let url = "";
+
+            // Generate URL based on platform
+            if (platform === "stakeus") {
+                url = `https://playstake.info/bonus?code=${encodeURIComponent(code)}`;
+            } else if (platform === "stakecom") {
+                url = `https://playstake.info/bonus?code=${encodeURIComponent(code)}`;
+            } else if (platform === "shuffle") {
+                url = `https://rezorp.com/shuffle/${encodeURIComponent(code)}`;
+            }
+
+            // Open the generated URL in a new tab
+            window.open(url, "_blank");
+        });
+    </script>
 </body>
 </html>
