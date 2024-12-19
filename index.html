@@ -5,27 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GambaCodez Bonus Codes</title>
     <style>
+        /* Dark mode background and text color */
         body {
+            background-color: #121212; /* Dark background */
+            color: #e0e0e0; /* Light text color */
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #f9f9f9;
             text-align: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
+
+        /* Neon effect for text */
+        .neon {
+            color: #00ff00; /* Neon green text */
+            text-shadow: 
+                0 0 5px #00ff00, 
+                0 0 10px #00ff00, 
+                0 0 15px #00ff00, 
+                0 0 20px #ff00ff, 
+                0 0 30px #ff00ff, 
+                0 0 40px #ff00ff, 
+                0 0 50px #ff00ff, 
+                0 0 75px #ff00ff;
+        }
+
+        /* Neon outline for containers */
+        .neon-outline {
+            border: 2px solid #00ff00;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            transition: border 0.3s ease;
+        }
+
+        /* Neon spacers (neon horizontal lines) */
+        .neon-line {
+            border: 1px solid #ff00ff; /* Neon pink border */
+            margin: 20px 0;
+        }
+
+        /* Logo styling */
         .logo {
             width: 150px;
         }
-        h1 {
-            color: #333;
-        }
+
+        /* Form styling */
         form {
             margin: 20px auto;
             max-width: 400px;
             padding: 20px;
             border: 1px solid #ccc;
-            background: #fff;
+            background: #333; /* Dark background for form */
             border-radius: 8px;
         }
+
         button, input[type="text"] {
             padding: 10px 15px;
             margin: 10px 0;
@@ -33,13 +67,30 @@
             border-radius: 5px;
             font-size: 16px;
         }
+
         button {
-            background-color: #007bff;
+            background-color: #00ff00; /* Neon green button */
             color: #fff;
             cursor: pointer;
         }
+
         button:hover {
-            background-color: #0056b3;
+            background-color: #00cc00; /* Darker green on hover */
+        }
+
+        /* Links styling */
+        footer a {
+            color: #ff00ff; /* Neon pink for links */
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Radio buttons and inputs */
+        input[type="radio"] {
+            margin: 5px;
         }
     </style>
 </head>
@@ -47,10 +98,10 @@
     <!-- Logo -->
     <img src="https://i.ibb.co/jz4STcc/Treasure-chest.jpg" alt="Logo" class="logo">
 
-    <h1>GambaCodez Bonus Codes</h1>
+    <h1 class="neon">GambaCodez Bonus Codes</h1>
 
     <!-- Form for code input -->
-    <form id="codeForm">
+    <form id="codeForm" class="neon-outline">
         <div class="radio-group">
             <p>Select your platform:</p>
             <label><input type="radio" name="platform" value="stakecom" checked> Stake.com</label>
